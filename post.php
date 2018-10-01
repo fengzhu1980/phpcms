@@ -57,6 +57,7 @@
 
       <!-- Comments Form -->
       <?php
+        // Create comment
         if (isset($_POST['create_comment'])) {
           $the_post_id = $_GET['p_id'];
           $comment_author = $_POST['comment_author'];
@@ -71,6 +72,14 @@
             if (!$create_comment_query) {
               die('QUERY FAILED' . mysqli_error($connection));
             }
+
+            // Add comment + 1
+            $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $the_post_id";
+            $add_comment_count = mysqli_query($connection, $query);
+            if ($add_comment_count) {
+              die('Query failed.' . mysqli_error($connection));
+            }
+            
           }
         }
       ?>
@@ -99,6 +108,7 @@
 
       <!-- Comment -->
       <?php
+        // Show comments list
         $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
         $query .= "AND comment_status = 'approved' ";
         $query .= "ORDER BY comment_id DESC";

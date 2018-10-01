@@ -23,7 +23,7 @@
             </li>
             <li class="divider"></li>
             <li>
-              <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+              <a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
             </li>
           </ul>
         </li>
@@ -69,10 +69,10 @@
             </a>
             <ul id="demo" class="collapse">
               <li>
-                <a href="#">View All Users</a>
+                <a href="./users.php">View All Users</a>
               </li>
               <li>
-                <a href="#">Add User</a>
+                <a href="./users.php?source=add_user">Add User</a>
               </li>
             </ul>
           </li>
