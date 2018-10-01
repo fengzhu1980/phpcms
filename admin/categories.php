@@ -13,7 +13,7 @@
           <div class="col-lg-12">
             <h1 class="page-header">
               Admin Page
-              <small>Subheading</small>
+              <small>Category</small>
             </h1>
             <!-- Add Category Form Start -->
             <div class="col-xs-6">
