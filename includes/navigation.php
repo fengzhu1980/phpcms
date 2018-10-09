@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,6 +25,17 @@
           }
         ?>
         <li><a href="/cmsMy/admin">Admin</a></li>
+
+        <?php
+          if (isset($_SESSION['user_role'])) {
+            if (isset($_GET['p_id'])) {
+              $the_post_id = $_GET['p_id'];
+              // echo isset($_SESSION['user_role']);
+              echo "<li><a href='/cmsMy/admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a></li>";
+            }
+          }
+        ?>
+
       </ul>
     </div>
     <!-- /.navbar-collapse -->
