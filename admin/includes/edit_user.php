@@ -37,9 +37,20 @@ if (isset($_GET['edit_user'])) {
 
       $db_user_pwd = $row['user_password'];
 
-      if ($db_user_pwd != $user_password) {
-        $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+      // if ($db_user_pwd != $user_password) {
+      //   $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+      // }
+
+      $qu = "SELECT randSalt FROM users";
+      $select_randsalt_query = mysqli_query($connection, $qu);
+      if (!$select_randsalt_query) {
+        die("Query failed." . mysqli_error($connection));
       }
+
+      $row = mysqli_fetch_array($select_randsalt_query);
+      $salt = $row['randSalt'];
+      $hashed_password = crypt($user_password, $salt);
+
       $query = "UPDATE users SET ";
       $query .="user_firstname  = '{$user_firstname}', ";
       $query .="user_lastname = '{$user_lastname}', ";

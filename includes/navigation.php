@@ -25,6 +25,7 @@
           }
         ?>
         <li><a href="/cmsMy/admin">Admin</a></li>
+        <li><a href="/cmsMy/registration.php">Registration</a></li>
 
         <?php
           if (isset($_SESSION['user_role'])) {

@@ -80,6 +80,8 @@
               die('Query failed.' . mysqli_error($connection));
             }
             
+          } else {
+            echo "<script>alert('Fields cannot be empty')</script>";
           }
         }
       ?>
