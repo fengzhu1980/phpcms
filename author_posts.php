@@ -14,12 +14,13 @@
       <?php
         if (isset($_GET['p_id'])) {
           $the_post_id = $_GET['p_id'];
+          $the_post_author = $_GET['author'];
         }
-        $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
+        $query = "SELECT * FROM posts WHERE post_user = '{$the_post_author}'";
         $select_all_posts_query = mysqli_query($connection, $query);
 
         while($row = mysqli_fetch_assoc($select_all_posts_query)) {
-          // $post_id = $row['post_id'];
+          $post_id = $row['post_id'];
           $post_title = $row['post_title'];
           $post_author = $row['post_user'];
           $post_date = $row['post_date'];
@@ -35,11 +36,11 @@
 
       <!-- First Blog Post -->
       <h2>
-        <a href="#"><?php echo $post_title ?></a>
+        <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
       </h2>
       <p class="lead">
         by 
-        <a href="author_posts.php?author=<?php echo $post_author; ?>&p_id=<?php echo $the_post_id; ?>">
+        <a href="author_posts.php?author=<?php echo $post_author; ?>&p_id=<?php echo $post_id; ?>">
           <?php echo $post_author ?>
         </a>
       </p>
