@@ -14,18 +14,25 @@
       <?php
         if (isset($_GET['p_id'])) {
           $the_post_id = $_GET['p_id'];
-        }
-        $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
-        $select_all_posts_query = mysqli_query($connection, $query);
 
-        while($row = mysqli_fetch_assoc($select_all_posts_query)) {
-          // $post_id = $row['post_id'];
-          $post_title = $row['post_title'];
-          $post_author = $row['post_user'];
-          $post_date = $row['post_date'];
-          $post_image = $row['post_image'];
-          $post_content = substr($row['post_content'],0,400);
-          $post_status = $row['post_status'];
+          $view_query = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = $the_post_id";
+          $send_query = mysqli_query($connection, $view_query);
+
+          // if (!$send_query) {
+          //   die('Query failed.' . mysqli_error($connection));
+          // }
+        
+          $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
+          $select_all_posts_query = mysqli_query($connection, $query);
+
+          while($row = mysqli_fetch_assoc($select_all_posts_query)) {
+            // $post_id = $row['post_id'];
+            $post_title = $row['post_title'];
+            $post_author = $row['post_user'];
+            $post_date = $row['post_date'];
+            $post_image = $row['post_image'];
+            $post_content = substr($row['post_content'],0,400);
+            $post_status = $row['post_status'];
       ?>
 
       <h1 class="page-header">
@@ -139,6 +146,9 @@
         </div>
       <?php
         }
+      } else {
+        header("Location: index.php");
+      }
       ?>
 
     </div>

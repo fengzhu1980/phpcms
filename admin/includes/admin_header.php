@@ -34,6 +34,7 @@
 
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/styles.css">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
